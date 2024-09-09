@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MOVIE FINDER
 
-## Getting Started
+#### Your site to discover the next movie to watch and enjoy!
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+#### Featured Movie lists in Home to explore immediately
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Search by title, genre and other criteria
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Show details of a specific movie
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Discover movies related to a specific movie
 
-## Learn More
+#### Authentication
 
-To learn more about Next.js, take a look at the following resources:
+#### Dark mode
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### i18n
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Technologies
 
-## Deploy on Vercel
+#### Nextjs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Typescript
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#### Tailwind + shadcn
+
+#### Redux Toolkit
+
+#### Axios
+
+#### React Router
+
+#### Eslint Airbnb
