@@ -1,0 +1,38 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      pull-requests: write
+      contents: write
+      repository-projects: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set Node.js 18.18.2
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.18.2
+
+      - name: Cache npm Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ./node_modules
+          key: node-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            node
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Semantic Release
+        run: npx semantic-release
