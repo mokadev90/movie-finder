@@ -6,19 +6,26 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky"
   },
   "dependencies": {
+    "@commitlint/cli": "^19.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "husky": "^9.1.5",
     "lucide-react": "^0.439.0",
     "next": "14.2.9",
     "react": "^18",
     "react-dom": "^18",
+    "semantic-release": "^24.1.0",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^19.4.1",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
