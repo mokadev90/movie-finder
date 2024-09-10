@@ -15,6 +15,8 @@
     "react/require-default-props": "off",
     "operator-linebreak": ["error", "after"],
     "arrow-parens": "off",
+    "jsx-a11y/html-has-lang": "off",
+    "implicit-arrow-linebreak": "off",
     "no-param-reassign": [
       "error",
       {
