@@ -14,6 +14,14 @@
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "operator-linebreak": ["error", "after"],
+    "arrow-parens": "off",
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": ["state"]
+      }
+    ],
     "object-curly-newline": [
       "error",
       { "multiline": true, "consistent": true }
