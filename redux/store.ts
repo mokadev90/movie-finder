@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from './slices';
 
 export const makeStore = () =>
   configureStore({
-    reducer: {},
+    reducer: {
+      counter: counterReducer,
+    },
   });
 
 // Infer the type of makeStore
