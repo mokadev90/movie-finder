@@ -1,35 +1,41 @@
 # MOVIE FINDER
 
-#### Your site to discover the next movie to watch and enjoy!
+Your site to discover the next movie to watch and enjoy!
 
 ## Features
 
-#### Featured Movie lists in Home to explore immediately
+- Featured Movie lists in Home to explore immediately
 
-#### Search by title, genre and other criteria
+- Search by title, genre and other criteria
 
-#### Show details of a specific movie
+- Show details of a specific movie
 
-#### Discover movies related to a specific movie
+- Discover movies related to a specific movie
 
-#### Authentication
+- Authentication
 
-#### Dark mode
+- Dark mode
 
-#### i18n
+- i18n
 
 ## Technologies
 
-#### Nextjs
+- Nextjs
 
-#### Typescript
+- Typescript
 
-#### Tailwind + shadcn
+- Tailwind + shadcn
 
-#### Redux Toolkit
+- Redux Toolkit
 
-#### Axios
+- Axios
 
-#### React Router
+- Eslint Airbnb
 
-#### Eslint Airbnb
+- Commitlint + Semantic release + husky
+
+- next-intl
+
+## API
+
+- https://developer.themoviedb.org/reference/intro/getting-started
