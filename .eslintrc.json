@@ -8,7 +8,24 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, {"extensions": [".tsx", ".jsx"]}]
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "operator-linebreak": ["error", "after"],
+    "object-curly-newline": [
+      "error",
+      { "multiline": true, "consistent": true }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   },
   "overrides": [
     {
