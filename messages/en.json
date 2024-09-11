@@ -1,5 +1,15 @@
 {
   "Index": {
-    "title": "Hello world"
+    "title": "Welcome to MOVIE FINDER",
+    "description": "Your site to know what to watch next!"
+  },
+  "Now Playing": {
+    "title": "Now Playing"
+  },
+  "Not Found": {
+    "title": "Something get wrong"
+  },
+  "Footer": {
+    "sign": "Developed by Moka"
   }
 }
