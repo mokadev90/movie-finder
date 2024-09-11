@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/mokadev90/movie-finder/compare/v1.6.0...v1.6.1) (2024-09-11)
+
+
+### Bug Fixes
+
+* ts errors ([3bf3d4b](https://github.com/mokadev90/movie-finder/commit/3bf3d4b973c1ec35d40be7af6ca1faa025e247f3))
+
 # [1.6.0](https://github.com/mokadev90/movie-finder/compare/v1.5.0...v1.6.0) (2024-09-11)
 
 
