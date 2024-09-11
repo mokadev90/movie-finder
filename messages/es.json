@@ -18,5 +18,8 @@
     "voteAverage": "Promedio Votos",
     "voteCount": "Cantidad Votos",
     "genres": "Géneros"
+  },
+  "Header": {
+    "placeholder": "Buscar..."
   }
 }
