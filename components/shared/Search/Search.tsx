@@ -5,19 +5,25 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+
+interface SearchFormValues {
+  searchbar: string;
+}
 
 function Search() {
   const t = useTranslations('Header');
   const localeActive = useLocale();
   const router = useRouter();
-  const form = useForm();
-  const onSubmit = async ({ searchbar }: { searchbar: string }) => {
+  const form = useForm<SearchFormValues>();
+  const onSubmit: SubmitHandler<SearchFormValues> = ({ searchbar }) => {
     router.push(`/${localeActive}/gallery/${searchbar}`);
   };
+
   return (
     <div>
       <Form {...form}>
+        {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
         <form onSubmit={form.handleSubmit(onSubmit)} className="flex">
           <FormField
             control={form.control}

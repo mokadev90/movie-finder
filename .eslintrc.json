@@ -43,6 +43,7 @@
     ],
     "tailwindcss/no-custom-classname": "off"
   },
+  "ignorePatterns": ["build/", "node_modules/", "components/ui"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],

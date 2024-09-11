@@ -1,4 +1,3 @@
-import MovieDetailDTO from '@/application/dto/MovieDetailDTO';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import { useLocale } from 'next-intl';
 import Image from 'next/image';
