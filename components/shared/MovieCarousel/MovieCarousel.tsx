@@ -14,12 +14,13 @@ import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import MovieCard from '../MovieCard/MovieCard';
 
 interface Props {
-  type: 'now_playing';
+  type: 'now_playing' | 'recommendations';
   movieArray: MovieSummaryDTO[];
 }
 
 const types = {
   now_playing: 'Now Playing',
+  recommendations: 'Recommendations',
 };
 
 function MovieCarousel({ movieArray, type }: Props) {

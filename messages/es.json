@@ -6,6 +6,9 @@
   "Now Playing": {
     "title": "En Cartelera"
   },
+  "Recommendations": {
+    "title": "Recomendaciones"
+  },
   "Not Found": {
     "title": "Algo salió mal"
   },

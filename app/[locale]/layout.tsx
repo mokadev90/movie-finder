@@ -35,7 +35,7 @@ export default async function Layout({
           >
             <StoreProvider>
               <Header />
-              <main className="mx-auto flex max-w-6xl flex-1 justify-center">
+              <main className="mx-auto flex flex-1 justify-center">
                 {children}
               </main>
               <Footer />

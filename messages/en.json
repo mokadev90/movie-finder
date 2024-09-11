@@ -6,6 +6,9 @@
   "Now Playing": {
     "title": "Now Playing"
   },
+  "Recommendations": {
+    "title": "Recommendations"
+  },
   "Not Found": {
     "title": "Something get wrong"
   },

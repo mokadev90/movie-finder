@@ -118,6 +118,35 @@ class ApiMovieRepository implements MovieRepository {
     return { page, results: movies };
   }
 
+  async getRecommendations(
+    movie_id: number,
+    language: string,
+  ): Promise<{
+    page: number;
+    results: MovieSummary[];
+  }> {
+    const response: AxiosResponse<MovieListResponseDTO> = await apiService.get(
+      `/movie/${movie_id}/recommendations?language=${language}`,
+    );
+    const { page, results } = response.data;
+    const movies = results.map(
+      result =>
+        new MovieSummary(
+          result.id,
+          result.title,
+          new Date(result.release_date),
+          result.poster_path,
+          result.backdrop_path,
+          result.overview,
+          result.vote_average,
+          result.vote_count,
+          result.genre_ids,
+          result.popularity,
+        ),
+    );
+    return { page, results: movies };
+  }
+
   getMovieImageUrl(imageId: string, resolution = 'w500'): string {
     return `https://image.tmdb.org/t/p/${resolution}${imageId}`;
   }

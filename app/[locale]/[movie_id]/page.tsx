@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieCarousel from '@/components/shared/MovieCarousel/MovieCarousel';
 import Image from 'next/image';
+import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 
 export default async function MoviePage({
   params: { movie_id, locale },
@@ -31,14 +32,28 @@ export default async function MoviePage({
   const imageUrl = repository.getMovieImageUrl(posterPath, 'w780');
   const backUrl = repository.getMovieImageUrl(backdropPath, 'w1280');
   const releaseDateFormatted = releaseDate.toISOString().split('T')[0];
+  const { results } = await repository.getRecommendations(movie_id, language);
+
+  const simpleResults: MovieSummaryDTO[] = results.map(movie_recommended => ({
+    ...movie_recommended,
+    poster_path: repository.getMovieImageUrl(
+      movie_recommended.posterPath,
+      'w780',
+    ),
+    release_date: movie_recommended.releaseDate.toDateString(),
+    backdrop_path: movie_recommended.backdropPath,
+    vote_average: movie_recommended.voteAverage,
+    vote_count: movie_recommended.voteCount,
+    genre_ids: movie_recommended.genreIds,
+  }));
 
   return (
-    <div className="relative mt-8 flex h-fit w-full max-w-full flex-col items-center justify-items-center gap-16 text-white">
+    <div className="relative mt-8 flex h-fit w-screen max-w-full max-w-none flex-col items-center justify-items-center gap-16 text-white">
       <Image
         src={backUrl}
         alt={title}
         fill
-        className="-z-10 h-72 w-52 object-cover"
+        className="-z-10 min-h-72 min-w-52 object-cover"
       />
       <div className="flex bg-gradient-to-t from-black to-black/50">
         <div className="flex flex-col gap-8 p-4 md:p-8">
@@ -78,10 +93,11 @@ export default async function MoviePage({
               </li>
             </ul>
           </div>
+          <div className="flex justify-center p-4">
+            <MovieCarousel type="recommendations" movieArray={simpleResults} />
+          </div>
         </div>
       </div>
-
-      {/* <MovieCarousel type="now_playing" movieArray={simpleResults} /> */}
     </div>
   );
 }
