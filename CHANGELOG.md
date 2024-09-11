@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/mokadev90/movie-finder/compare/v1.2.0...v1.3.0) (2024-09-11)
+
+
+### Bug Fixes
+
+* styles and types ([138a6f9](https://github.com/mokadev90/movie-finder/commit/138a6f915826fd27ba3019acfea25b49d163b767))
+
+
+### Features
+
+* add Movie Detail translates ([f6c7b4c](https://github.com/mokadev90/movie-finder/commit/f6c7b4c2d44ed1a7b08c25eba850fd8ef9595faf))
+
 # [1.2.0](https://github.com/mokadev90/movie-finder/compare/v1.1.0...v1.2.0) (2024-09-11)
 
 
