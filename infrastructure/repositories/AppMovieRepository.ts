@@ -23,17 +23,17 @@ class ApiMovieRepository implements MovieRepository {
     return new MovieDetail(
       data.id,
       data.title,
-      new Date(data.releaseDate),
-      data.posterPath,
-      data.backdropPath,
+      new Date(data.release_date),
+      data.poster_path,
+      data.backdrop_path,
       data.overview,
-      data.voteAverage,
-      data.voteCount,
+      data.vote_average,
+      data.vote_count,
       data.runtime,
       data.budget,
       data.revenue,
       data.genres,
-      data.productionCompanies,
+      data.production_companies,
     );
   }
 

@@ -17,6 +17,7 @@
     "arrow-parens": "off",
     "jsx-a11y/html-has-lang": "off",
     "no-useless-constructor": "off",
+    "camelcase": "off",
     "class-methods-use-this": "off",
     "implicit-arrow-linebreak": "off",
     "no-param-reassign": [

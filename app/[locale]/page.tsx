@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieCarousel from '@/components/shared/MovieCarousel/MovieCarousel';
+import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 
 export default async function Home({
   params: { locale },
@@ -10,13 +11,17 @@ export default async function Home({
 
   const repository = new ApiMovieRepository();
   const { results } = await repository.getNowPlaying(language);
-  const simpleResults = results.map(movie => ({
-    id: movie.id,
-    image: repository.getMovieImageUrl(movie.posterPath, 'w780'),
-    title: movie.title,
-    voteAverage: movie.voteAverage,
-    releaseDate: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+  const simpleResults: MovieSummaryDTO[] = results.map(movie => ({
+    ...movie,
+    poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
+    release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+    backdrop_path: movie.backdropPath,
+    vote_average: movie.voteAverage,
+    vote_count: movie.voteCount,
+    genre_ids: movie.genreIds,
   }));
+
+  console.log('results', JSON.stringify(simpleResults));
 
   return (
     <div className="mt-8 flex h-fit w-full max-w-full flex-col items-center justify-items-center gap-16">

@@ -10,19 +10,12 @@ import {
 import React from 'react';
 import Autoplay from 'embla-carousel-autoplay';
 import { useTranslations } from 'next-intl';
+import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import MovieCard from '../MovieCard/MovieCard';
-
-interface MovieCarouselItem {
-  id: number;
-  image: string;
-  title: string;
-  voteAverage: number;
-  releaseDate: string;
-}
 
 interface Props {
   type: 'now_playing';
-  movieArray: MovieCarouselItem[];
+  movieArray: MovieSummaryDTO[];
 }
 
 const types = {
@@ -48,13 +41,7 @@ function MovieCarousel({ movieArray, type }: Props) {
         <CarouselContent>
           {movieArray.map(movie => (
             <CarouselItem key={movie.id} className="w-fit">
-              <MovieCard
-                id={0}
-                image={movie.image}
-                title={movie.title}
-                voteAverage={movie.voteAverage}
-                releaseDate={movie.releaseDate}
-              />
+              <MovieCard movie={movie} />
             </CarouselItem>
           ))}
         </CarouselContent>

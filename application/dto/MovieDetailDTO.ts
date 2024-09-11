@@ -1,17 +1,17 @@
 interface MovieDetailDTO {
   id: number;
   title: string;
-  releaseDate: string;
-  posterPath: string;
-  backdropPath: string;
+  release_date: string;
+  poster_path: string;
+  backdrop_path: string;
   overview: string;
-  voteAverage: number;
-  voteCount: number;
+  vote_average: number;
+  vote_count: number;
   runtime: number;
   budget: number;
   revenue: number;
   genres: { id: number; name: string }[];
-  productionCompanies: { id: number; name: string }[];
+  production_companies: { id: number; name: string }[];
 }
 
 export default MovieDetailDTO;
