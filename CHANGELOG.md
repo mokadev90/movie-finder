@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/mokadev90/movie-finder/compare/v1.4.0...v1.5.0) (2024-09-11)
+
+
+### Features
+
+* add movie recommendations ([f6fffea](https://github.com/mokadev90/movie-finder/commit/f6fffea231511ca761156197c7ca17a9afe12ecb))
+
 # [1.4.0](https://github.com/mokadev90/movie-finder/compare/v1.3.0...v1.4.0) (2024-09-11)
 
 
