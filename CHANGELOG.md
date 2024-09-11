@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/mokadev90/movie-finder/compare/v1.5.0...v1.6.0) (2024-09-11)
+
+
+### Features
+
+* apply redux and new carousels ([09d4e55](https://github.com/mokadev90/movie-finder/commit/09d4e5583eed8aa5185e3fed18c5ee691041e793))
+
 # [1.5.0](https://github.com/mokadev90/movie-finder/compare/v1.4.0...v1.5.0) (2024-09-11)
 
 
