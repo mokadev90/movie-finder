@@ -11,5 +11,12 @@
   },
   "Footer": {
     "sign": "Desarrollado por Moka"
+  },
+  "Movie Detail": {
+    "overview": "Sinopsis",
+    "releaseDate": "Fecha estreno",
+    "voteAverage": "Promedio Votos",
+    "voteCount": "Cantidad Votos",
+    "genres": "Géneros"
   }
 }
