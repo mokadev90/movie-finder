@@ -65,6 +65,89 @@ class ApiMovieRepository implements MovieRepository {
     results: MovieSummary[];
   }> {
     const response: AxiosResponse<MovieListDatedResponseDTO> =
+      await apiService.get(`/movie/now_playing?language=${language}`);
+    const { dates, page, results } = response.data;
+    const transformedDates = {
+      maximum: new Date(dates.maximum),
+      minimum: new Date(dates.minimum),
+    };
+    const movies = results.map(
+      result =>
+        new MovieSummary(
+          result.id,
+          result.title,
+          new Date(result.release_date),
+          result.poster_path,
+          result.backdrop_path,
+          result.overview,
+          result.vote_average,
+          result.vote_count,
+          result.genre_ids,
+          result.popularity,
+        ),
+    );
+    return { dates: transformedDates, page, results: movies };
+  }
+
+  async getPopular(language: string): Promise<{
+    page: number;
+    results: MovieSummary[];
+  }> {
+    const response: AxiosResponse<MovieListResponseDTO> = await apiService.get(
+      `/movie/popular?language=${language}`,
+    );
+    const { page, results } = response.data;
+    const movies = results.map(
+      result =>
+        new MovieSummary(
+          result.id,
+          result.title,
+          new Date(result.release_date),
+          result.poster_path,
+          result.backdrop_path,
+          result.overview,
+          result.vote_average,
+          result.vote_count,
+          result.genre_ids,
+          result.popularity,
+        ),
+    );
+    return { page, results: movies };
+  }
+
+  async getTopRated(language: string): Promise<{
+    page: number;
+    results: MovieSummary[];
+  }> {
+    const response: AxiosResponse<MovieListResponseDTO> = await apiService.get(
+      `/movie/top_rated?language=${language}`,
+    );
+    const { page, results } = response.data;
+
+    const movies = results.map(
+      result =>
+        new MovieSummary(
+          result.id,
+          result.title,
+          new Date(result.release_date),
+          result.poster_path,
+          result.backdrop_path,
+          result.overview,
+          result.vote_average,
+          result.vote_count,
+          result.genre_ids,
+          result.popularity,
+        ),
+    );
+    return { page, results: movies };
+  }
+
+  async getUpcoming(language: string): Promise<{
+    dates: { maximum: Date; minimum: Date };
+    page: number;
+    results: MovieSummary[];
+  }> {
+    const response: AxiosResponse<MovieListDatedResponseDTO> =
       await apiService.get(`/movie/upcoming?language=${language}`);
     const { dates, page, results } = response.data;
     const transformedDates = {

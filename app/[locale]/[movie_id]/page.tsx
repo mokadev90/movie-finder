@@ -48,15 +48,15 @@ export default async function MoviePage({
   }));
 
   return (
-    <div className="relative mt-8 flex h-fit w-screen max-w-full max-w-none flex-col items-center justify-items-center gap-16 text-white">
+    <div className="relative mt-8 flex h-fit w-full max-w-full flex-col items-center justify-items-center gap-16 text-white">
       <Image
         src={backUrl}
         alt={title}
         fill
         className="-z-10 min-h-72 min-w-52 object-cover"
       />
-      <div className="flex bg-gradient-to-t from-black to-black/50">
-        <div className="flex flex-col gap-8 p-4 md:p-8">
+      <div className="flex w-full max-w-full bg-gradient-to-t from-black to-black/50">
+        <div className="flex w-full max-w-full flex-col gap-8 p-4 md:p-8">
           <div className="flex justify-between gap-4">
             <Image
               src={imageUrl}

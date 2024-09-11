@@ -6,8 +6,20 @@
   "Now Playing": {
     "title": "Now Playing"
   },
+  "Popular": {
+    "title": "Popular"
+  },
+  "Top Rated": {
+    "title": "Top Rated"
+  },
+  "Upcoming": {
+    "title": "Upcoming"
+  },
   "Recommendations": {
     "title": "Recommendations"
+  },
+  "Gallery": {
+    "title": "Results for:"
   },
   "Not Found": {
     "title": "Something get wrong"

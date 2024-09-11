@@ -3,7 +3,9 @@ import './globals.css';
 import { ReactNode } from 'react';
 import { Footer, Header } from '@/components/shared';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
+import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
+import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import ThemeProvider from './components/ThemeProvider';
 import StoreProvider from './components/StoreProvider';
 
@@ -21,11 +23,76 @@ export default async function Layout({
     locale: string;
   };
 }>) {
+  const language = locale || 'es';
+
+  const repository = new ApiMovieRepository();
+
+  const { results: nowPlayingResults } =
+    await repository.getNowPlaying(language);
+  const nowPlayingResultsMapped: MovieSummaryDTO[] = nowPlayingResults.map(
+    movie => ({
+      ...movie,
+      poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
+      release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+      backdrop_path: movie.backdropPath,
+      vote_average: movie.voteAverage,
+      vote_count: movie.voteCount,
+      genre_ids: movie.genreIds,
+    }),
+  );
+
+  const { results: popularResults } = await repository.getPopular(language);
+  const popularResultsMapped: MovieSummaryDTO[] = popularResults.map(movie => ({
+    ...movie,
+    poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
+    release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+    backdrop_path: movie.backdropPath,
+    vote_average: movie.voteAverage,
+    vote_count: movie.voteCount,
+    genre_ids: movie.genreIds,
+  }));
+
+  const { results: topRatedResults } = await repository.getTopRated(language);
+  const topRatedResultsMapped: MovieSummaryDTO[] = topRatedResults.map(
+    movie => ({
+      ...movie,
+      poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
+      release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+      backdrop_path: movie.backdropPath,
+      vote_average: movie.voteAverage,
+      vote_count: movie.voteCount,
+      genre_ids: movie.genreIds,
+    }),
+  );
+
+  const { results: upcomingResults } = await repository.getUpcoming(language);
+  const upcomingResultsMapped: MovieSummaryDTO[] = upcomingResults.map(
+    movie => ({
+      ...movie,
+      poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
+      release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
+      backdrop_path: movie.backdropPath,
+      vote_average: movie.voteAverage,
+      vote_count: movie.voteCount,
+      genre_ids: movie.genreIds,
+    }),
+  );
   const messages = await getMessages();
+
+  const preloadedState = {
+    movies: {
+      nowPlaying: nowPlayingResultsMapped,
+      popular: popularResultsMapped,
+      topRated: topRatedResultsMapped,
+      upcoming: upcomingResultsMapped,
+      loading: false,
+      error: null,
+    },
+  };
 
   return (
     <html lang={locale}>
-      <body className="mx-auto flex min-h-screen flex-col">
+      <body className="mx-auto flex min-h-screen max-w-full flex-col">
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"
@@ -33,9 +100,9 @@ export default async function Layout({
             enableSystem
             disableTransitionOnChange
           >
-            <StoreProvider>
+            <StoreProvider initialReduxState={preloadedState}>
               <Header />
-              <main className="mx-auto flex flex-1 justify-center">
+              <main className="mx-auto flex max-w-full flex-1 justify-center">
                 {children}
               </main>
               <Footer />

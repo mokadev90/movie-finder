@@ -6,8 +6,20 @@
   "Now Playing": {
     "title": "En Cartelera"
   },
+  "Popular": {
+    "title": "Populares"
+  },
+  "Top Rated": {
+    "title": "Mejor Votadas"
+  },
+  "Upcoming": {
+    "title": "Próximos estrenos"
+  },
   "Recommendations": {
     "title": "Recomendaciones"
+  },
+  "Gallery": {
+    "title": "Resultados para:"
   },
   "Not Found": {
     "title": "Algo salió mal"

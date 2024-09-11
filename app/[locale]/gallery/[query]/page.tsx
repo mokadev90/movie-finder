@@ -8,7 +8,7 @@ import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 export default async function MovieGalleryPage({
   params: { query, locale },
 }: Readonly<{ params: { query: string; locale: 'en' | 'es' } }>) {
-  const t = await getTranslations('Movie Detail');
+  const t = await getTranslations('Gallery');
   const language = locale || 'es';
 
   const repository = new ApiMovieRepository();
@@ -26,10 +26,13 @@ export default async function MovieGalleryPage({
   }));
 
   return (
-    <div className="relative mt-8 grid h-fit w-full max-w-full grid-cols-1 gap-16 text-white md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {simpleResults.map(movie => (
-        <MovieCard key={movie.id} movie={movie} />
-      ))}
+    <div className="h-fit max-w-full">
+      <h3>{`${t('title')} ${query}`}</h3>
+      <div className="relative mt-8 grid w-full grid-cols-1 gap-16 text-white md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        {simpleResults.map(movie => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </div>
     </div>
   );
 }

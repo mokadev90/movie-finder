@@ -14,19 +14,27 @@ import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import MovieCard from '../MovieCard/MovieCard';
 
 interface Props {
-  type: 'now_playing' | 'recommendations';
+  type:
+    | 'now_playing'
+    | 'popular'
+    | 'top_rated'
+    | 'upcoming'
+    | 'recommendations';
   movieArray: MovieSummaryDTO[];
 }
 
 const types = {
   now_playing: 'Now Playing',
+  popular: 'Popular',
+  top_rated: 'Top Rated',
+  upcoming: 'Upcoming',
   recommendations: 'Recommendations',
 };
 
 function MovieCarousel({ movieArray, type }: Props) {
   const t = useTranslations(types[type]);
   return (
-    <div>
+    <div className="max-w-full">
       <h2 className="mb-8 text-xl text-primary">{t('title')}</h2>
       <Carousel
         opts={{
@@ -46,8 +54,6 @@ function MovieCarousel({ movieArray, type }: Props) {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
       </Carousel>
     </div>
   );

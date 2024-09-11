@@ -1,33 +1,30 @@
+'use client';
+
 import { getTranslations } from 'next-intl/server';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieCarousel from '@/components/shared/MovieCarousel/MovieCarousel';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
+import { useDispatch, useSelector } from 'react-redux';
+import { makeStore, RootState } from '@/redux/store';
+import { useTranslations } from 'next-intl';
 
-export default async function Home({
+export default function Home({
   params: { locale },
 }: Readonly<{ params: { locale: string } }>) {
-  const t = await getTranslations('Index');
-  const language = locale || 'es';
-
-  const repository = new ApiMovieRepository();
-  const { results } = await repository.getNowPlaying(language);
-  const simpleResults: MovieSummaryDTO[] = results.map(movie => ({
-    ...movie,
-    poster_path: repository.getMovieImageUrl(movie.posterPath, 'w780'),
-    release_date: movie.releaseDate.toDateString(), // Asegurarte de formatear la fecha a string
-    backdrop_path: movie.backdropPath,
-    vote_average: movie.voteAverage,
-    vote_count: movie.voteCount,
-    genre_ids: movie.genreIds,
-  }));
-
-  console.log('results', JSON.stringify(simpleResults));
+  const t = useTranslations('Index');
+  const nowPlaying = useSelector((state: RootState) => state.movies.nowPlaying);
+  const popular = useSelector((state: RootState) => state.movies.popular);
+  const topRated = useSelector((state: RootState) => state.movies.topRated);
+  const upcoming = useSelector((state: RootState) => state.movies.upcoming);
 
   return (
-    <div className="mt-8 flex h-fit w-full max-w-full flex-col items-center justify-items-center gap-16">
+    <div className="mt-8 flex h-fit w-full max-w-full flex-col items-center justify-items-center gap-16 px-8">
       <h1 className="text-4xl">{t('title')}</h1>
       <h3 className="text-xl">{t('description')}</h3>
-      <MovieCarousel type="now_playing" movieArray={simpleResults} />
+      <MovieCarousel type="now_playing" movieArray={nowPlaying} />
+      <MovieCarousel type="popular" movieArray={popular} />
+      <MovieCarousel type="top_rated" movieArray={topRated} />
+      <MovieCarousel type="upcoming" movieArray={upcoming} />
     </div>
   );
 }

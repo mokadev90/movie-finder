@@ -20,14 +20,14 @@ interface MovieRepository {
   getMovieDetail(id: number, language: 'es' | 'en'): Promise<MovieDetail>;
   getMovieCredits(id: number, language: 'es' | 'en'): Promise<Credit[]>;
   getNowPlaying(language: 'es' | 'en'): Promise<MovieListDatedResponse>;
+  getPopular(language: 'es' | 'en'): Promise<MovieListDatedResponse>;
+  getTopRated(language: 'es' | 'en'): Promise<MovieListDatedResponse>;
+  getUpcoming(language: 'es' | 'en'): Promise<MovieListDatedResponse>;
   searchMovie(query: string, language: 'es' | 'en'): Promise<MovieListResponse>;
   getRecommendations(
     movie_id: number,
     language: 'es' | 'en',
   ): Promise<MovieListResponse>;
-  getUpcoming(language: 'es' | 'en'): Promise<MovieListDatedResponse>;
-  getPopular(language: 'es' | 'en'): Promise<MovieListResponse>;
-  getTopRated(language: 'es' | 'en'): Promise<MovieListResponse>;
   getMovieImageUrl(imageId: string, resolution?: string): string;
 }
 

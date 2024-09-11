@@ -1,11 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './slices';
+import moviesReducer from './slices/moviesSlice';
+import movieDetailReducer from './slices/movieDetailSlice';
+import searchReducer from './slices/searchSlice';
 
-export const makeStore = () =>
+export const makeStore = (preloadedState = {}) =>
   configureStore({
     reducer: {
-      counter: counterReducer,
+      movies: moviesReducer,
+      movieDetail: movieDetailReducer,
+      search: searchReducer,
     },
+    preloadedState,
   });
 
 // Infer the type of makeStore
