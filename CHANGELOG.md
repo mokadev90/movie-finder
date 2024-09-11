@@ -1,3 +1,12 @@
+# [1.4.0](https://github.com/mokadev90/movie-finder/compare/v1.3.0...v1.4.0) (2024-09-11)
+
+
+### Features
+
+* add favicon and title ([4a3c286](https://github.com/mokadev90/movie-finder/commit/4a3c2865ac8061bacdffced948ef43aa24132a92))
+* add Header traslations ([aebfbe4](https://github.com/mokadev90/movie-finder/commit/aebfbe43e28fadea0df8e916e624f9a2243b6f33))
+* improve styles and navigation ([45c091d](https://github.com/mokadev90/movie-finder/commit/45c091d9dd906cf4dc4ca05f88930920631ead76))
+
 # [1.3.0](https://github.com/mokadev90/movie-finder/compare/v1.2.0...v1.3.0) (2024-09-11)
 
 
