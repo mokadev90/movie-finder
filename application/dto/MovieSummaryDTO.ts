@@ -1,13 +1,13 @@
 interface MovieSummaryDTO {
   id: number;
   title: string;
-  releaseDate: string;
-  posterPath: string;
-  backdropPath: string;
+  release_date: string;
+  poster_path: string;
+  backdrop_path: string;
   overview: string;
-  voteAverage: number;
-  voteCount: number;
-  genreIds: number[];
+  vote_average: number;
+  vote_count: number;
+  genre_ids: number[];
   popularity: number;
 }
 

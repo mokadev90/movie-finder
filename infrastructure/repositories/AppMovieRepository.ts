@@ -1,48 +1,23 @@
 import MovieDetailDTO from '@/application/dto/MovieDetailDTO';
+import MovieListDatedResponseDTO from '@/application/dto/MovieListDatedResponseDTO';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
+import Credit from '@/domain/entities/Credit';
 import MovieDetail from '@/domain/entities/MovieDetail';
 import MovieSummary from '@/domain/entities/MovieSummary';
-import MovieRepository from '@/domain/repositories/MovieRepository';
+import MovieRepository, {
+  MovieListDatedResponse,
+} from '@/domain/repositories/MovieRepository';
 import apiService from '@/services/axiosInstance';
 import { AxiosResponse } from 'axios';
 
 class ApiMovieRepository implements MovieRepository {
-  async getMovieSummary(
-    id: number,
-    language: 'es' | 'en',
-  ): Promise<MovieSummary> {
-    const languageParam = language === 'es' ? 'es-AR' : 'en-US';
-    const response: AxiosResponse<MovieSummaryDTO> = await apiService.get(
-      `https://api.themoviedb.org/3/movie/summary/${id}?language=${languageParam}`,
-    );
-    const { data } = response;
-    return new MovieSummary(
-      data.id,
-      data.title,
-      new Date(data.releaseDate),
-      data.posterPath,
-      data.backdropPath,
-      data.overview,
-      data.voteAverage,
-      data.voteCount,
-      data.genreIds,
-      data.popularity,
-    );
-  }
-
   async getMovieDetail(
     id: number,
     language: 'es' | 'en',
   ): Promise<MovieDetail> {
     const languageParam = language === 'es' ? 'es-AR' : 'en-US';
     const response: AxiosResponse<MovieDetailDTO> = await apiService.get(
-      `https://api.themoviedb.org/3/movie/${id}?language=${languageParam}`,
-      {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiOWQwMjZjNWNjODM1NzUyOWYxMmJjNTI1MmM1ODA3MSIsIm5iZiI6MTcyNTkxODg4Ny44MjkxNzYsInN1YiI6IjY2ZGY2ZDI0NjhmNDljZjljYzE1Y2RhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rJClg9rC0b71Tj_8qe1R_28fJqbAPGAJFd_6O0wUSQQ',
-        },
-      },
+      `/movie/${id}?language=${languageParam}`,
     );
     const { data } = response;
     return new MovieDetail(
@@ -60,6 +35,61 @@ class ApiMovieRepository implements MovieRepository {
       data.genres,
       data.productionCompanies,
     );
+  }
+
+  async getMovieCredits(id: number, language: string): Promise<Credit[]> {
+    const response: AxiosResponse<{ cast: Credit[] }> = await apiService.get(
+      `/movie/${id}/credits?language=${language}`,
+    );
+    return response.data.cast.map(
+      castMember =>
+        new Credit(
+          castMember.id,
+          castMember.knownForDepartment,
+          castMember.name,
+          castMember.originalName,
+          castMember.popularity,
+          castMember.profilePath,
+          castMember.castId,
+          castMember.character,
+          castMember.creditId,
+          castMember.order,
+        ),
+    );
+  }
+
+  async getNowPlaying(language: string): Promise<{
+    dates: { maximum: Date; minimum: Date };
+    page: number;
+    results: MovieSummary[];
+  }> {
+    const response: AxiosResponse<MovieListDatedResponseDTO> =
+      await apiService.get(`/movie/upcoming?language=${language}`);
+    const { dates, page, results } = response.data;
+    const transformedDates = {
+      maximum: new Date(dates.maximum),
+      minimum: new Date(dates.minimum),
+    };
+    const movies = results.map(
+      result =>
+        new MovieSummary(
+          result.id,
+          result.title,
+          new Date(result.release_date),
+          result.poster_path,
+          result.backdrop_path,
+          result.overview,
+          result.vote_average,
+          result.vote_count,
+          result.genre_ids,
+          result.popularity,
+        ),
+    );
+    return { dates: transformedDates, page, results: movies };
+  }
+
+  getMovieImageUrl(imageId: string, resolution = 'w500'): string {
+    return `https://image.tmdb.org/t/p/${resolution}${imageId}`;
   }
 }
 

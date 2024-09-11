@@ -1,6 +1,13 @@
 'use client';
 
-import { useLocale } from 'next-intl';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select/select';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, useTransition } from 'react';
 
@@ -9,25 +16,31 @@ function LocaleSwitcher() {
   const router = useRouter();
   const localActive = useLocale();
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const nextLocale = e.target.value;
+  const localeLabel = {
+    en: 'English',
+    es: 'Español',
+  };
+
+  const onSelectChange = (nextLocale: string) => {
     startTransition(() => {
       router.replace(`/${nextLocale}`);
     });
   };
 
   return (
-    <label className="rounded border-2">
-      <p className="sr-only">change language</p>
-      <select
-        defaultValue={localActive}
-        onChange={onSelectChange}
-        disabled={isPending}
-      >
-        <option value="en">English</option>
-        <option value="es">Español</option>
-      </select>
-    </label>
+    <Select
+      defaultValue={localActive}
+      disabled={isPending}
+      onValueChange={onSelectChange}
+    >
+      <SelectTrigger>
+        <SelectValue>{localeLabel[localActive]}</SelectValue>
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="en">English</SelectItem>
+        <SelectItem value="es">Español</SelectItem>
+      </SelectContent>
+    </Select>
   );
 }
 
