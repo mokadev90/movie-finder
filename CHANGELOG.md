@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/mokadev90/movie-finder/compare/v1.1.0...v1.2.0) (2024-09-11)
+
+
+### Features
+
+* add some translations ([5d92029](https://github.com/mokadev90/movie-finder/commit/5d92029792d2c4e7e7119375e323f4286772e261))
+* create first component and apply them ([8083d6b](https://github.com/mokadev90/movie-finder/commit/8083d6b309a61c8f99cde7cdecf551c66248c35a))
+* update apiService ([7fa7e3a](https://github.com/mokadev90/movie-finder/commit/7fa7e3aa50aae5ca6e4338bd916aeeec998d7eee))
+
 # [1.1.0](https://github.com/mokadev90/movie-finder/compare/v1.0.0...v1.1.0) (2024-09-10)
 
 
