@@ -7,7 +7,6 @@ interface MovieSummaryDTO {
   overview: string;
   vote_average: number;
   vote_count: number;
-  genre_ids: number[];
   popularity: number;
 }
 

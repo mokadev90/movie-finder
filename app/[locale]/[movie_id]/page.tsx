@@ -12,9 +12,8 @@ export default async function MoviePage({
 
   const repository = new ApiMovieRepository();
   const movie = await repository.getMovieDetail(movie_id, language);
-  console.log('movie', movie);
+
   const {
-    id,
     title,
     releaseDate,
     posterPath,
@@ -22,11 +21,7 @@ export default async function MoviePage({
     overview,
     voteAverage,
     voteCount,
-    runtime,
-    budget,
-    revenue,
     genres,
-    productionCompanies,
   } = movie;
 
   const imageUrl = repository.getMovieImageUrl(posterPath, 'w780');
@@ -44,7 +39,6 @@ export default async function MoviePage({
     backdrop_path: movie_recommended.backdropPath,
     vote_average: movie_recommended.voteAverage,
     vote_count: movie_recommended.voteCount,
-    genre_ids: movie_recommended.genreIds,
   }));
 
   return (

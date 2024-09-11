@@ -7,7 +7,7 @@ const movieRepository = new ApiMovieRepository();
 // Async thunk para obtener detalles de una película
 export const fetchMovieDetail = createAsyncThunk(
   'movieDetail/fetchMovieDetail',
-  async ({ id, language }: { id: number; language: string }) => {
+  async ({ id, language }: { id: number; language: 'en' | 'es' }) => {
     const response = await movieRepository.getMovieDetail(id, language);
     return response;
   },
@@ -41,7 +41,7 @@ const movieDetailSlice = createSlice({
       })
       .addCase(fetchMovieDetail.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch movie detail';
+        state.error = action.error.message ?? 'Failed to fetch movie detail';
       });
   },
 });

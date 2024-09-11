@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 'use client';
 
 import { useRef } from 'react';
 import { Provider } from 'react-redux';
-import { makeStore, AppStore } from '@/redux/store';
+import { makeStore, AppStore, RootState } from '@/redux/store';
 
 export default function StoreProvider({
   children,
   initialReduxState,
 }: {
   children: React.ReactNode;
-  initialReduxState?: any;
+  initialReduxState?: Partial<RootState>;
 }) {
   const storeRef = useRef<AppStore>();
   if (!storeRef.current) {

@@ -10,7 +10,6 @@ class MovieSummary extends Movie {
     overview: string,
     voteAverage: number,
     voteCount: number,
-    public readonly genreIds: number[],
     public readonly popularity: number,
   ) {
     super(

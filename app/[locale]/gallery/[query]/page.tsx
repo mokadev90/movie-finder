@@ -1,7 +1,5 @@
 import { getTranslations } from 'next-intl/server';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
-import MovieCarousel from '@/components/shared/MovieCarousel/MovieCarousel';
-import Image from 'next/image';
 import { MovieCard } from '@/components/shared';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 
@@ -13,7 +11,6 @@ export default async function MovieGalleryPage({
 
   const repository = new ApiMovieRepository();
   const { results } = await repository.searchMovie(query, language);
-  console.log('results', results);
 
   const simpleResults: MovieSummaryDTO[] = results.map(movie => ({
     ...movie,
@@ -22,7 +19,6 @@ export default async function MovieGalleryPage({
     backdrop_path: movie.backdropPath,
     vote_average: movie.voteAverage,
     vote_count: movie.voteCount,
-    genre_ids: movie.genreIds,
   }));
 
   return (

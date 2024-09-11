@@ -3,7 +3,7 @@ import './globals.css';
 import { ReactNode } from 'react';
 import { Footer, Header } from '@/components/shared';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages } from 'next-intl/server';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 import ThemeProvider from './components/ThemeProvider';
@@ -37,7 +37,6 @@ export default async function Layout({
       backdrop_path: movie.backdropPath,
       vote_average: movie.voteAverage,
       vote_count: movie.voteCount,
-      genre_ids: movie.genreIds,
     }),
   );
 
@@ -49,7 +48,6 @@ export default async function Layout({
     backdrop_path: movie.backdropPath,
     vote_average: movie.voteAverage,
     vote_count: movie.voteCount,
-    genre_ids: movie.genreIds,
   }));
 
   const { results: topRatedResults } = await repository.getTopRated(language);
@@ -61,7 +59,6 @@ export default async function Layout({
       backdrop_path: movie.backdropPath,
       vote_average: movie.voteAverage,
       vote_count: movie.voteCount,
-      genre_ids: movie.genreIds,
     }),
   );
 
@@ -74,7 +71,6 @@ export default async function Layout({
       backdrop_path: movie.backdropPath,
       vote_average: movie.voteAverage,
       vote_count: movie.voteCount,
-      genre_ids: movie.genreIds,
     }),
   );
   const messages = await getMessages();
@@ -85,6 +81,7 @@ export default async function Layout({
       popular: popularResultsMapped,
       topRated: topRatedResultsMapped,
       upcoming: upcomingResultsMapped,
+      recommendations: [],
       loading: false,
       error: null,
     },

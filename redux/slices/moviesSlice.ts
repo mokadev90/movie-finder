@@ -1,11 +1,8 @@
 'use client';
 
-import MovieListDatedResponseDTO from '@/application/dto/MovieListDatedResponseDTO';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
-import MovieSummary from '@/domain/entities/MovieSummary';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 
 const movieRepository = new ApiMovieRepository();
 
@@ -86,13 +83,20 @@ const moviesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchNowPlaying.fulfilled, (state, action) => {
-        state.nowPlaying = action.payload;
+        state.nowPlaying = action.payload.map(movie => ({
+          ...movie,
+          release_date: movie.releaseDate.toISOString(),
+          poster_path: movie.posterPath,
+          backdrop_path: movie.backdropPath,
+          vote_average: movie.voteAverage,
+          vote_count: movie.voteCount,
+        }));
         state.loading = false;
       })
       .addCase(fetchNowPlaying.rejected, (state, action) => {
         state.loading = false;
         state.error =
-          action.error.message || 'Failed to fetch now playing movies';
+          action.error.message ?? 'Failed to fetch now playing movies';
       })
       // Manejo de Popular
       .addCase(fetchPopular.pending, state => {
@@ -100,12 +104,19 @@ const moviesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchPopular.fulfilled, (state, action) => {
-        state.popular = action.payload;
+        state.popular = action.payload.map(movie => ({
+          ...movie,
+          release_date: movie.releaseDate.toISOString(),
+          poster_path: movie.posterPath,
+          backdrop_path: movie.backdropPath,
+          vote_average: movie.voteAverage,
+          vote_count: movie.voteCount,
+        }));
         state.loading = false;
       })
       .addCase(fetchPopular.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch recommendations';
+        state.error = action.error.message ?? 'Failed to fetch recommendations';
       })
       // Manejo de Top Rated
       .addCase(fetchTopRated.pending, state => {
@@ -113,12 +124,19 @@ const moviesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchTopRated.fulfilled, (state, action) => {
-        state.topRated = action.payload;
+        state.topRated = action.payload.map(movie => ({
+          ...movie,
+          release_date: movie.releaseDate.toISOString(),
+          poster_path: movie.posterPath,
+          backdrop_path: movie.backdropPath,
+          vote_average: movie.voteAverage,
+          vote_count: movie.voteCount,
+        }));
         state.loading = false;
       })
       .addCase(fetchTopRated.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch recommendations';
+        state.error = action.error.message ?? 'Failed to fetch recommendations';
       })
       // Manejo de Upcoming
       .addCase(fetchUpcoming.pending, state => {
@@ -126,12 +144,19 @@ const moviesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchUpcoming.fulfilled, (state, action) => {
-        state.upcoming = action.payload;
+        state.upcoming = action.payload.map(movie => ({
+          ...movie,
+          release_date: movie.releaseDate.toISOString(),
+          poster_path: movie.posterPath,
+          backdrop_path: movie.backdropPath,
+          vote_average: movie.voteAverage,
+          vote_count: movie.voteCount,
+        }));
         state.loading = false;
       })
       .addCase(fetchUpcoming.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch recommendations';
+        state.error = action.error.message ?? 'Failed to fetch recommendations';
       })
       // Manejo de recomendaciones
       .addCase(fetchRecommendations.pending, state => {
@@ -139,12 +164,19 @@ const moviesSlice = createSlice({
         state.error = null;
       })
       .addCase(fetchRecommendations.fulfilled, (state, action) => {
-        state.recommendations = action.payload;
+        state.recommendations = action.payload.map(movie => ({
+          ...movie,
+          release_date: movie.releaseDate.toISOString(),
+          poster_path: movie.posterPath,
+          backdrop_path: movie.backdropPath,
+          vote_average: movie.voteAverage,
+          vote_count: movie.voteCount,
+        }));
         state.loading = false;
       })
       .addCase(fetchRecommendations.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message || 'Failed to fetch recommendations';
+        state.error = action.error.message ?? 'Failed to fetch recommendations';
       });
   },
 });

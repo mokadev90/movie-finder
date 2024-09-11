@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import MovieSummary from '@/domain/entities/MovieSummary';
 import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
 
@@ -17,7 +16,6 @@ export const searchMovies = createAsyncThunk(
       backdrop_path: movie.backdropPath,
       vote_average: movie.voteAverage,
       vote_count: movie.voteCount,
-      genre_ids: movie.genreIds,
     }));
   },
 );

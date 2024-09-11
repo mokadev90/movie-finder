@@ -1,16 +1,11 @@
 'use client';
 
-import { getTranslations } from 'next-intl/server';
-import ApiMovieRepository from '@/infrastructure/repositories/AppMovieRepository';
 import MovieCarousel from '@/components/shared/MovieCarousel/MovieCarousel';
-import MovieSummaryDTO from '@/application/dto/MovieSummaryDTO';
-import { useDispatch, useSelector } from 'react-redux';
-import { makeStore, RootState } from '@/redux/store';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import { useTranslations } from 'next-intl';
 
-export default function Home({
-  params: { locale },
-}: Readonly<{ params: { locale: string } }>) {
+export default function Home() {
   const t = useTranslations('Index');
   const nowPlaying = useSelector((state: RootState) => state.movies.nowPlaying);
   const popular = useSelector((state: RootState) => state.movies.popular);

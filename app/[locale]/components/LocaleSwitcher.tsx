@@ -7,9 +7,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select/select';
-import { useLocale, useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { useRouter } from 'next/navigation';
-import React, { ChangeEvent, useTransition } from 'react';
+import React, { useTransition } from 'react';
 
 function LocaleSwitcher() {
   const [isPending, startTransition] = useTransition();
@@ -19,7 +19,10 @@ function LocaleSwitcher() {
   const localeLabel = {
     en: 'English',
     es: 'Español',
-  };
+  } as const;
+
+  const locale =
+    localeLabel[localActive as keyof typeof localeLabel] || 'Unknown Locale';
 
   const onSelectChange = (nextLocale: string) => {
     startTransition(() => {
@@ -34,7 +37,7 @@ function LocaleSwitcher() {
       onValueChange={onSelectChange}
     >
       <SelectTrigger className="w-28">
-        <SelectValue>{localeLabel[localActive]}</SelectValue>
+        <SelectValue>{locale}</SelectValue>
       </SelectTrigger>
       <SelectContent>
         <SelectItem value="en">English</SelectItem>
