@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/mokadev90/movie-finder/compare/v1.6.1...v1.6.2) (2024-09-11)
+
+
+### Bug Fixes
+
+* eslint errors ([1f4ce10](https://github.com/mokadev90/movie-finder/commit/1f4ce101d3a07e2ab8875ab40b291b217f063e46))
+
 ## [1.6.1](https://github.com/mokadev90/movie-finder/compare/v1.6.0...v1.6.1) (2024-09-11)
 
 
