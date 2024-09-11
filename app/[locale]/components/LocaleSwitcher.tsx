@@ -33,7 +33,7 @@ function LocaleSwitcher() {
       disabled={isPending}
       onValueChange={onSelectChange}
     >
-      <SelectTrigger>
+      <SelectTrigger className="w-28">
         <SelectValue>{localeLabel[localActive]}</SelectValue>
       </SelectTrigger>
       <SelectContent>
