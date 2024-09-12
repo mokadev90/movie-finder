@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/mokadev90/movie-finder/compare/v1.6.2...v1.6.3) (2024-09-12)
+
+
+### Bug Fixes
+
+* styles in Header and MovieDetail page ([9a48d98](https://github.com/mokadev90/movie-finder/commit/9a48d98309985321860ca0dd8c0af2f483f98a66))
+
 ## [1.6.2](https://github.com/mokadev90/movie-finder/compare/v1.6.1...v1.6.2) (2024-09-11)
 
 
