@@ -12,8 +12,6 @@ Your site to discover the next movie to watch and enjoy!
 
 - Discover movies related to a specific movie
 
-- Authentication
-
 - Dark mode
 
 - i18n
@@ -39,3 +37,25 @@ Your site to discover the next movie to watch and enjoy!
 ## API
 
 - https://developer.themoviedb.org/reference/intro/getting-started
+
+## Features to v2
+
+- User authentication
+
+- Watchlist
+
+- Searchbar suggestions
+
+## Proyect considerations to v2
+
+- Unit Testing
+
+- E2E Testing
+
+- Add testing to github actions
+
+- Improve DDD structure
+
+- Improve style
+
+- Collect metrics (Web vitals)
