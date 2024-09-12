@@ -1,3 +1,10 @@
+## [1.6.4](https://github.com/mokadev90/movie-finder/compare/v1.6.3...v1.6.4) (2024-09-12)
+
+
+### Bug Fixes
+
+* layout in Movie Page ([53833d5](https://github.com/mokadev90/movie-finder/commit/53833d5e7cca9d42fdc0f9587718659a5e6c2c22))
+
 ## [1.6.3](https://github.com/mokadev90/movie-finder/compare/v1.6.2...v1.6.3) (2024-09-12)
 
 
