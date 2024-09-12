@@ -14,10 +14,12 @@ function Header() {
       </Link>
       {/* <Image src="/logo-text.svg" width={150} height={40} />
       </div> */}
-      <div className="flex gap-8">
+      <div className="flex flex-col gap-8">
         <Search />
-        <LocaleSwitcher />
-        <ModeToggle />
+        <div className="flex gap-8 self-end">
+          <LocaleSwitcher />
+          <ModeToggle />
+        </div>
       </div>
     </header>
   );

@@ -51,7 +51,7 @@ export default async function MoviePage({
       />
       <div className="flex w-full max-w-full bg-gradient-to-t from-black to-black/50">
         <div className="flex w-full max-w-full flex-col gap-8 p-4 md:p-8">
-          <div className="flex justify-between gap-4">
+          <div className="flex flex-col items-center justify-between gap-4">
             <Image
               src={imageUrl}
               alt={title}
@@ -72,18 +72,18 @@ export default async function MoviePage({
           <span className="text-xl">{`${overview}`}</span>
           <div className="flex flex-col">
             Aditional information:
-            <ul className="flex justify-between">
+            <ul className="flex justify-between text-sm">
               <li>
                 <span className="text-md block">{`${t('releaseDate')}:`}</span>
-                <span className="text-xl">{`${releaseDateFormatted}`}</span>
+                <span className="text-md">{`${releaseDateFormatted}`}</span>
               </li>
               <li>
                 <span className="text-md block">{`${t('voteAverage')}:`}</span>
-                <span className="text-xl">{`${voteAverage}`}</span>
+                <span className="text-md">{`${voteAverage}`}</span>
               </li>
               <li>
                 <span className="text-md block">{`${t('voteCount')}:`}</span>
-                <span className="text-xl">{`${voteCount}`}</span>
+                <span className="text-md">{`${voteCount}`}</span>
               </li>
             </ul>
           </div>
