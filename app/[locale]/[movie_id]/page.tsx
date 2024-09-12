@@ -51,7 +51,7 @@ export default async function MoviePage({
       />
       <div className="flex w-full max-w-full bg-gradient-to-t from-black to-black/50">
         <div className="flex w-full max-w-full flex-col gap-8 p-4 md:p-8">
-          <div className="flex flex-col items-center justify-between gap-4">
+          <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
             <Image
               src={imageUrl}
               alt={title}
