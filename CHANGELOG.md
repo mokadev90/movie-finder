@@ -1,3 +1,11 @@
+## [1.6.5](https://github.com/mokadev90/movie-finder/compare/v1.6.4...v1.6.5) (2024-09-13)
+
+
+### Bug Fixes
+
+* searchbar input required ([0451539](https://github.com/mokadev90/movie-finder/commit/045153928b722f333a2aca9f21dcd8d07f1d798b))
+* when locale change preserves the path ([e02c09e](https://github.com/mokadev90/movie-finder/commit/e02c09eb189d2e45be55cd284cdd1f1d88a4a2db))
+
 ## [1.6.4](https://github.com/mokadev90/movie-finder/compare/v1.6.3...v1.6.4) (2024-09-12)
 
 
