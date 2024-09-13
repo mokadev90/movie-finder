@@ -35,6 +35,7 @@ function Search() {
                     type="search"
                     placeholder={t('placeholder')}
                     className="w-full"
+                    required
                     {...field}
                   />
                 </FormControl>
