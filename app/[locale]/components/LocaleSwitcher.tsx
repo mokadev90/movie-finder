@@ -8,13 +8,14 @@ import {
   SelectValue,
 } from '@/components/ui/select/select';
 import { useLocale } from 'next-intl';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import React, { useTransition } from 'react';
 
 function LocaleSwitcher() {
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
   const localActive = useLocale();
+  const pathname = usePathname();
 
   const localeLabel = {
     en: 'English',
@@ -26,7 +27,8 @@ function LocaleSwitcher() {
 
   const onSelectChange = (nextLocale: string) => {
     startTransition(() => {
-      router.replace(`/${nextLocale}`);
+      const path = pathname.split('/').slice(2);
+      router.replace(`/${nextLocale}/${path.join('/')}`);
     });
   };
 
