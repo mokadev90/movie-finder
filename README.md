@@ -58,4 +58,14 @@ Your site to discover the next movie to watch and enjoy!
 
 - Improve style
 
-- Collect metrics (Web vitals)
+- Collect metrics (Web vitals) - Clarity
+
+- Storybook
+
+- Error Boundaries
+
+- Sentry
+
+- Skeleton loader
+
+- TanStack Query
